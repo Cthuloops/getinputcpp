@@ -8,6 +8,8 @@
 void print_main_menu();
 void clear_input_example();
 void interactive_clear_input_example();
+void get_input_example();
+void interactive_get_input_example();
 
 
 int main() {
@@ -27,8 +29,10 @@ int main() {
                 interactive_clear_input_example();
                 break;
             case 3:
+                get_input_example();
                 break;
             case 4:
+                interactive_get_input_example();
                 break;
             case 5:
                 keep_going = false;
@@ -54,19 +58,21 @@ void print_main_menu() {
 
 void clear_input_example() {
     std::cout << "\n+----------------| Clear Input Example |-------------------+\n"
-              << "Initializing variable user_int for storing user input\n";
+              << "| Initializing variable user_int for storing user input    |\n"
+              << "| Simulating user input of \"12\\n\"                          |\n";
     int user_int;
-    std::cout << "Simulating user input of \"12\\n\"\n";
     std::istringstream input("12\n");
     input >> user_int;
-    std::cout << "user_int is: " << user_int
-              << " after reading into the variable.\n"
-              << "This leaves the \\n in the input buffer which we can see"
-              << " using peek(): " << input.peek() << "\n";
+    std::cout << "| user_int is: " << user_int
+              << " after reading into the variable.         |\n"
+              << "| This leaves the \\n in the input buffer which we can see  |\n"
+              << "| using peek(): " << input.peek() << ", which is the ASCII character for LF.   |\n"
+              << "| LF is the control character for newline on Linux.        |\n";
     clear_input(input);
     if (input.peek() == EOF) {
-        std::cout << "After calling clear_input on the input buffer,"
-                  << " it now reads EOF or end of file\n";
+    std::cout << "| After calling clear_input on the input buffer, it now    |\n"
+              << "| reads EOF or end of file.                                |\n"
+              << "+----------------------------------------------------------+\n";
     }
 }
 
@@ -74,14 +80,14 @@ void clear_input_example() {
 void interactive_clear_input_example() {
     std::cout << "\n+-----------| Interactive Clear Input Example|-------------+\n"
               << "|----------------------------------------------------------|\n"
-              << "| Your input is going to get stored as an int in user_int. |\n";
-    int user_int;
-    const std::string prompt = "Try entering anything you like (-1 to exit): ";
-    std::cout << "| Try entering whatever you like, -1 is to exit.           |\n"
+              << "| Your input is going to get stored as an int in user_int. |\n"
+              << "| Try entering whatever you like, -1 is to exit.           |\n"
               << "| Enter some additional text after the -1 to see how the   |\n"
               << "| clear_input function clears the buffer.                  |\n"
               << "+----------------------------------------------------------+\n"
               << "Enter: ";
+    int user_int;
+    const std::string prompt = "Try entering anything you like (-1 to exit): ";
     std::cin >> user_int;
     while (std::cin.fail() || user_int != -1) {
         clear_input(std::cin);
@@ -98,4 +104,16 @@ void interactive_clear_input_example() {
               << "Calling clear_input removes everything after the -1 and\n"
               << "leaves a clear buffer for the next cin, getline, or\n"
               << "get input call\n";
+}
+
+
+void get_input_example() {
+    std::cout << "\n+------------------| Get Input Example |------------------+\n"
+              << "|----------------------------------------------------------|\n"
+              << "||";
+}
+
+
+void interactive_get_input_example() {
+    std::cout << "\nNot Implemented\n";
 }
