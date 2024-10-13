@@ -18,9 +18,7 @@ int main() {
     while (keep_going) {
         print_main_menu();
         std::cin >> choice;
-        if (std::cin.fail() || choice < 1 || choice > 5) {
-            clear_input(std::cin);
-        }
+        clear_input(std::cin);
         switch (choice) {
             case 1:
                 clear_input_example();
@@ -99,11 +97,11 @@ void interactive_clear_input_example() {
     if (remainder.size() > 38) {
         remainder = remainder.substr(0, 38) + "...";
     }
-    std::cout << "You entered -1 and "
+    std::cout << "You entered -1 and"
               << (remainder.size() != 0 ? remainder : " \\n") << "\n"
               << "Calling clear_input removes everything after the -1 and\n"
               << "leaves a clear buffer for the next cin, getline, or\n"
-              << "get input call\n";
+              << "get_input call\n";
 }
 
 
@@ -125,5 +123,11 @@ void get_input_example() {
 
 
 void interactive_get_input_example() {
-    std::cout << "\nNot Implemented\n";
+    std::cout << "\n+-------------| Interactive Get Input Example |------------+\n"
+              << "| Your input is going to be stored as a double              |\n"
+              << "| Try entering whatever you like, get_input has basic       |\n"
+              << "| validation built in to make sure the correct type of      |\n"
+              << "| input is acquired, it also leaves nothing in the buffer.  |\n"
+              << "+-----------------------------------------------------------+\n";
+    double user_double = get_input<double>(std::cin, "Enter a double: ");
 }
