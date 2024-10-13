@@ -110,7 +110,17 @@ void interactive_clear_input_example() {
 void get_input_example() {
     std::cout << "\n+------------------| Get Input Example |------------------+\n"
               << "|----------------------------------------------------------|\n"
-              << "||";
+              << "| Initializing user_double for storing input and           |\n"
+              << "| simulating user input of \"1.35\\n\".                       |\n";
+    double user_double;
+    std::istringstream input("1.35\n");
+    user_double = get_input<double>(input, "");
+    std::cout << "| The value in user_double is: " << user_double;
+    if (input.peek() == EOF) {
+        std::cout << " and there's nothing    |\n"
+                  << "| left in the input buffer                                 |\n"
+                  << "+----------------------------------------------------------+\n";
+    }
 }
 
 
