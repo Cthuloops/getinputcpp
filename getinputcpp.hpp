@@ -72,12 +72,11 @@ T get_input(std::istream &in, const std::string &prompt) {
             std::string remainder;
             std::getline(iss >> std::ws, remainder);
             if (!remainder.empty()) {
-                std::cout << "Warning: Additional input not accepted.";
+                std::cout << "Warning: Additional input not accepted.\n";
                 continue;
             }
             valid = true;
         } else {
-            clear_input(in);
             std::cout << "Invalid input. Please try again.\n";
         }
     }
