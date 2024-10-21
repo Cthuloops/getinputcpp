@@ -41,8 +41,10 @@ constexpr auto MAX_STREAM_SIZE = std::numeric_limits<std::streamsize>::max();
  * planning to use get_input or getline.
  */
 inline void clear_input(std::istream &in, char delim = '\n') {
-    in.clear();
-    in.ignore(MAX_STREAM_SIZE, delim);
+    if (in.peek() != EOF) {
+        in.clear();
+        in.ignore(MAX_STREAM_SIZE, delim);
+    }
 }
 
 /**
